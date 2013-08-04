@@ -1,0 +1,97 @@
+/*  Copyright 2008 Eric Schulz. All Rights Reserved.
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+    http://www.gnu.org/licenses/gpl-2.0.html
+*/
+
+/*
+Plugin Name: Profiler
+Plugin URI: http://www.visualguides.org/profiler/
+Author: Eric Schulz
+Author URI: http://www.visualguides.org/
+*/
+	
+	/*
+	Formatting for the user profiles, member directory, and stats widget
+	*/
+	.pfprofile {
+		text-decoration: none; 
+		border: none;
+		}
+		
+	.pfprofile h2 {
+		}
+		
+	.pfprofile h3 {
+		font-weight: normal;
+		border-bottom: 1px dotted #696969;
+		margin: 0px;
+		width: 400px;
+		padding: 11px 0px 3px 0px;
+		}
+		
+	.pfprofile h4 {
+		font-weight: normal;
+		border-bottom: 1px dotted #696969;
+		border: none;
+		margin: 0px;
+		padding: 11px 0px 0px 0px;
+		}
+		
+	.pfprofile p {
+		}
+		
+	.pfprofile a {
+		line-height: 22px;
+		}
+		
+		
+	.pfdirectory table {
+		border: 1px dotted #bbbbbb;
+		border-collapse: collapse;
+		margin: 15px 0px 0px 0px;
+		width: 100%;
+		}
+	
+	.pfdirectory th {
+		background-color: #E9E9E9;
+		text-align: left;
+		border-bottom: 1px dotted #bbbbbb;
+		padding: 0px 0px 0px 6px;
+		}
+	
+	.pfdirectory td {
+		padding: 3px 6px 3px 6px;
+		}
+		
+	.pfback {
+		font-weight: normal;
+		padding: 5px 0px 0px 0px;
+		margin: 0px;
+		}
+		
+	.pfpagisingle {
+		padding: 20px 0px 0px 0px;
+		}
+	
+	.pfpagidirect {
+		padding: 10px 0px 0px 0px;
+		}
+		
+	.pfwidget {
+		}
+	
+	.pfwidget h2 {
+		}
+	
+	.pfwidget small, #sidebar ul ul li, #sidebar ul ol li {
+		color: #000000;
+		}
