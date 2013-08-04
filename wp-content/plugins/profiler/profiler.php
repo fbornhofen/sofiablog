@@ -49,6 +49,14 @@ function pf_admin_menu()
     add_options_page('Profiler Options', 'Profiler_f', 10, basename(__FILE__), 'pf_options');
 }
 
+function pf_registered_in_past_three_years($uid)
+{
+    $userdata = get_userdata($uid);
+    $regdate = intval(date("Y", strtotime($userdata->user_registered)));
+    $curyear = intval(date("Y"));
+    return $regdate + 3 >= $curyear;
+}
+
 //returns an array with the requested users' IDs
 //takes order arguments for sorting purposes
 function pf_uids($start, $records, $order, $ordertype)
@@ -63,13 +71,18 @@ function pf_uids($start, $records, $order, $ordertype)
 	WHERE meta_value IN ($roles)) ORDER BY $order $ordertype
 	LIMIT $start, $records
 	");
-	
-    foreach($uids as $key=>$value)
+    
+    $result = array();
+    foreach($uids as $position=>$uid)
     {
-        $uids[$key] = $value;
+        // fbo 
+        // show only users registered within the past 3 years
+        if (pf_registered_in_past_three_years($uid)) {
+            $result[$position] = $uid;
+        }
     }
 	
-    return $uids;
+    return $result;
 }
 
 //returns an array with a user's profile information
@@ -140,10 +153,12 @@ function pf_get_enabledroles()
 function pf_user_count()
 {
     global $wpdb;
-	
-    $count = $wpdb->get_var("SELECT COUNT(ID) 
-	FROM $wpdb->users");
-	
+
+    // fbo 2013-08-03
+    // select only users registered within the past three years
+    $count = $wpdb->get_var("SELECT COUNT(ID)
+        FROM (SELECT ID FROM $wpdb->users WHERE user_registered > DATE_SUB(NOW(), INTERVAL 4 year)) AS TMP");
+
     return $count;
 }
 
@@ -575,7 +590,7 @@ function pf_insert_pagination_single()
 	
     for($i = 1; $i <= pf_maxuser(); $i++)
     {
-        if(pf_user_exists($user - $i))
+        if(pf_user_exists($user - $i) and pf_registered_in_past_three_years($user - $i))
         {
             $prev = $user - $i;
             break;
@@ -586,7 +601,7 @@ function pf_insert_pagination_single()
 	
     for($i = 1; $i <= pf_maxuser(); $i++)
     {
-        if(pf_user_exists($user + $i))
+        if(pf_user_exists($user + $i) and pf_registered_in_past_three_years($user + $i))
         {
             $next = $user + $i;
             break;
@@ -959,7 +974,7 @@ function pf_options()
          </label>
               </th>
               </tr>
-              </table>
+             </table>
 
               <table class="form-table">
               <tr>
