@@ -1,0 +1,26 @@
+.myownmenucontainer {
+}
+
+.myownmenucontainer div h3 {
+  display: none;
+}
+
+.myownmenu nav ul {
+  list-style: none;
+  display: inline;
+}
+
+.myownmenu nav ul li {
+  margin: 0px;
+  float: left;
+}
+
+.myownmenu nav ul li.menuOption {
+  display: inline;
+  float: left;
+}
+
+.myownmenu nav ul li.menuOption a {
+  display: inline;
+  float: left;
+}

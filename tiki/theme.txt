@@ -1,0 +1,11 @@
+Theme: jqui
+
+Modules:
+  Topbar: menu
+    menu_class=mymenucontainer
+    class=myownmenu
+    topclass=myownmenucontainer
+
+Admin->Look and Feel->Customization->Custom HTML <head>
+<link rel="stylesheet" href="/css/tikimenu.css" type="text/css">
+
